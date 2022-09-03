@@ -1,0 +1,33 @@
+Evolution of programming
+Past(10-15 years ago)
+Earlier applications were : Monolith Applications. In which different modules were wrapped into one application
+Deployed on Application Server : Which takes a lot of time
+Does not embrace distributed systems
+
+Today
+Microservices Applications are built
+That Run on cloud
+Embraces distributed systems
+
+Expectations  for Today
+Response time should be less i.e. milliseconds
+Scale (up or down) based on the load i.e no downtime
+Use resource efficiently
+Latency or response time faster 
+
+Spring MVC is a standard when creating a restful API.As shown in the picture, TomCat is embedded in Spring MVC, to handle network calls from the client. A thread from the thread pool is assigned for the request and sends the response back to the client. 
+
+Assigned Thread is responsible for handling the request. 
+Nowadays the thread has to interact with the various third party APIs. Until the response is received the thread will be blocked.
+Won’t scale for applications of today. WHY? Let’s see
+Latency in such cases will be the sum of all the response times 
+Latency = Sum(DB + API + API + …) response time
+ Handling Concurrent requests
+Managed by server.tomcat.max-threads : by default 200 connections/threads
+Can be overridden in application properties or application.yml file
+If we need to scale upto 10,000 concurrent users -then we can't scale -because scaling is possible upto some limit
+Thread and its Limitation
+Thread is an expensive resource
+It can easily take up the heap space of 1 MB
+More thread means more memory consumption by the thread itself
+In turn, less heap space for the processing request itself
